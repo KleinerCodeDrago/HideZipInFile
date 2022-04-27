@@ -29,36 +29,58 @@
         private void InitializeComponent()
         {
             this.ChooseZipLabel = new System.Windows.Forms.Label();
+            this.fileHideInLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ChooseZipLabel
             // 
             this.ChooseZipLabel.AllowDrop = true;
+            this.ChooseZipLabel.AutoSize = true;
             this.ChooseZipLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ChooseZipLabel.ForeColor = System.Drawing.Color.Red;
-            this.ChooseZipLabel.Location = new System.Drawing.Point(113, 59);
+            this.ChooseZipLabel.Location = new System.Drawing.Point(53, 59);
             this.ChooseZipLabel.Name = "ChooseZipLabel";
-            this.ChooseZipLabel.Size = new System.Drawing.Size(500, 300);
+            this.ChooseZipLabel.Size = new System.Drawing.Size(420, 54);
             this.ChooseZipLabel.TabIndex = 0;
             this.ChooseZipLabel.Text = "Choose zip file to hide";
             this.ChooseZipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ChooseZipLabel.Click += new System.EventHandler(this.ChooseZipLabel_Click);
             // 
+            // fileHideInLabel
+            // 
+            this.fileHideInLabel.AllowDrop = true;
+            this.fileHideInLabel.AutoSize = true;
+            this.fileHideInLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fileHideInLabel.ForeColor = System.Drawing.Color.Red;
+            this.fileHideInLabel.Location = new System.Drawing.Point(750, 59);
+            this.fileHideInLabel.Name = "fileHideInLabel";
+            this.fileHideInLabel.Size = new System.Drawing.Size(401, 54);
+            this.fileHideInLabel.TabIndex = 1;
+            this.fileHideInLabel.Text = "Choose file to hide in";
+            this.fileHideInLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.fileHideInLabel.Click += new System.EventHandler(this.fileHideInLabel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1883, 775);
+            this.ClientSize = new System.Drawing.Size(1348, 775);
+            this.Controls.Add(this.fileHideInLabel);
             this.Controls.Add(this.ChooseZipLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MinimumSize = new System.Drawing.Size(822, 0);
             this.Name = "Form1";
             this.Text = "HideZipFIle";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Label ChooseZipLabel;
+        private Label fileHideInLabel;
     }
 }
