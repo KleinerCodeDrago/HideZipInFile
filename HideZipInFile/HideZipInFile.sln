@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HideZipInFile", "HideZipInFile\HideZipInFile.csproj", "{4DC683E8-E8F0-4F39-AE87-82930D828447}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DC683E8-E8F0-4F39-AE87-82930D828447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC683E8-E8F0-4F39-AE87-82930D828447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC683E8-E8F0-4F39-AE87-82930D828447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC683E8-E8F0-4F39-AE87-82930D828447}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0566EE0-F39F-4F68-9AEC-360AE0E2C970}
+	EndGlobalSection
+EndGlobal
