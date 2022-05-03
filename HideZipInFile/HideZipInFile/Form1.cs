@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace HideZipInFile
 {
@@ -14,9 +16,22 @@ namespace HideZipInFile
             fileHideInLabel.Location = new Point((((Size.Width / 4) * 3) - fileHideInLabel.Width / 2), ((Size.Height / 10) * 3) - fileHideInLabel.Size.Height / 2);
             CombineButton.Location = new Point(((Size.Width / 2)) - CombineButton.Width / 2, (Size.Height / 10)*6 - CombineButton.Height / 2);
             MinimumSize = new Size(ChooseZipLabel.Width + fileHideInLabel.Width, Math.Max(ChooseZipLabel.Height, fileHideInLabel.Height)+CombineButton.Height+100);
+            if (PathToHideIn != "")
+            {
+                fileHideInLabel.ForeColor = Color.Green;
+                var splittet = PathToHideIn.Split(@"\");
+                fileHideInLabel.Text = splittet[splittet.Count() - 1];
+            }
+
+            if (HideFilePath != "")
+            {
+                ChooseZipLabel.ForeColor = Color.Green;
+                var splittet = HideFilePath.Split(@"\");
+                ChooseZipLabel.Text = splittet[splittet.Count() - 1];
+            }
         }
-        string PathToHideIn = "";
-        string HideFilePath = "";
+        string PathToHideIn = @"";
+        string HideFilePath = @"";
         private void ChooseZipLabel_Click(object sender, EventArgs e)
         {
             var filePath = string.Empty;
@@ -43,6 +58,8 @@ namespace HideZipInFile
             {
                 HideFilePath = filePath;
                 ChooseZipLabel.ForeColor = Color.Green;
+                var splittet = HideFilePath.Split(@"\");
+                ChooseZipLabel.Text = splittet[splittet.Count() - 1];
             }
         }
         private void fileHideInLabel_Click(object sender, EventArgs e)
@@ -70,6 +87,8 @@ namespace HideZipInFile
             {
                 PathToHideIn = filePath;
                 fileHideInLabel.ForeColor = Color.Green;
+                var splittet = PathToHideIn.Split(@"\");
+                fileHideInLabel.Text = splittet[splittet.Count() - 1];
             }
         }
 
@@ -85,9 +104,24 @@ namespace HideZipInFile
         {
             if (PathToHideIn != "" && HideFilePath != "")
             {
-                string strCmdText;
-                strCmdText = $"copy /b {PathToHideIn.Replace(@"\\", @"\")}+{HideFilePath.Replace(@"\\", @"\")} output.png";
-                System.Diagnostics.Process.Start("CMD.exe", strCmdText);
+                var simu = new InputSimulator();
+                simu.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_R);
+                System.Threading.Thread.Sleep(1000);
+                simu.Keyboard.TextEntry("cmd");
+                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                System.Threading.Thread.Sleep(1000);
+                var splittet = HideFilePath.Split(@"\");
+                var pfad = "";
+                for(int i = 0; i < splittet.Length-1; i++)
+                {
+                    pfad += splittet[i]+@"\";
+                }
+                simu.Keyboard.TextEntry(@"cd "+ pfad);
+                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                Thread.Sleep(1000);
+                var name = PathToHideIn[^5..];
+                simu.Keyboard.TextEntry(@$"copy /b {PathToHideIn}+{HideFilePath} output{name}");
+                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
             }
         }
     }
