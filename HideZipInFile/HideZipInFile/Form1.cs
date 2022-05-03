@@ -106,10 +106,10 @@ namespace HideZipInFile
             {
                 var simu = new InputSimulator();
                 simu.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_R);
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(250);
                 simu.Keyboard.TextEntry("cmd");
                 simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(250);
                 var splittet = HideFilePath.Split(@"\");
                 var pfad = "";
                 for(int i = 0; i < splittet.Length-1; i++)
@@ -118,7 +118,6 @@ namespace HideZipInFile
                 }
                 simu.Keyboard.TextEntry(@"cd "+ pfad);
                 simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-                Thread.Sleep(1000);
                 var name = PathToHideIn[^5..];
                 simu.Keyboard.TextEntry(@$"copy /b {PathToHideIn}+{HideFilePath} output{name}");
                 simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
