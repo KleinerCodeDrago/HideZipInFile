@@ -6,4 +6,4 @@ Der oben genannte command ermöglicht es eine Zip Datei in einem Bild zu verstec
 Wenn dieses Bild anschließend mit einem Programm wie 7zip geöffnet wird öffnet sich dieses wie ein Archiv und man kann in dieses Dateien hineinziehen oder rausholen.
 
 Downloadlink installer:
-https://www.mediafire.com/file/pzbhyb29uw69k1a/HideFileZipInFileInstaller.msi/file
+https://www.mediafire.com/file/bs7ifirwnvethrx/FileHiderInstaller.exe/file
