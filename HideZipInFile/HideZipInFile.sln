@@ -5,8 +5,6 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HideZipInFile", "HideZipInFile\HideZipInFile.csproj", "{4DC683E8-E8F0-4F39-AE87-82930D828447}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HideFileZipInFileInstaller", "HideFileZipInFileInstaller\HideFileZipInFileInstaller.vdproj", "{CC999B9A-00CF-4EED-A842-4DF36CF98436}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{4DC683E8-E8F0-4F39-AE87-82930D828447}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{4DC683E8-E8F0-4F39-AE87-82930D828447}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DC683E8-E8F0-4F39-AE87-82930D828447}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC999B9A-00CF-4EED-A842-4DF36CF98436}.Debug|Any CPU.ActiveCfg = Release
-		{CC999B9A-00CF-4EED-A842-4DF36CF98436}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
