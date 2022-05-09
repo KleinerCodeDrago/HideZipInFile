@@ -37,24 +37,39 @@ namespace HideZipInFile
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ChooseZipLabel.Location = new Point(((Size.Width / 4) - ChooseZipLabel.Width / 2), ((Size.Height / 10) * 3) - ChooseZipLabel.Size.Height / 2);
-            fileHideInLabel.Location = new Point((((Size.Width / 4) * 3) - fileHideInLabel.Width / 2), ((Size.Height / 10) * 3) - fileHideInLabel.Size.Height / 2);
-            CombineButton.Location = new Point(((Size.Width / 2)) - CombineButton.Width / 2, (Size.Height / 10) * 6 - CombineButton.Height / 2);
+            Form1_Resize(null, null);
             MinimumSize = new Size(ChooseZipLabel.Width + fileHideInLabel.Width, Math.Max(ChooseZipLabel.Height, fileHideInLabel.Height) + CombineButton.Height + 100);
-            if (PathToHideIn != "")
-            {
-                fileHideInLabel.ForeColor = Color.Green;
-                var splittet = PathToHideIn.Split(@"\");
-                fileHideInLabel.Text = splittet[splittet.Count() - 1];
-            }
-
-            if (HideFilePath != "")
-            {
-                ChooseZipLabel.ForeColor = Color.Green;
-                var splittet = HideFilePath.Split(@"\");
-                ChooseZipLabel.Text = splittet[splittet.Count() - 1];
-            }
+            
+            AenderLabel(Path.HideFilePath);
+            AenderLabel(Path.PathToHideIn);
         }
+        enum Path
+        {
+            HideFilePath,
+            PathToHideIn
+        }
+        void AenderLabel(Path itIs)
+        {
+            Label label = null;
+            string path = "";
+            switch (itIs)
+            {
+                case Path.HideFilePath:
+                    label = ChooseZipLabel;
+                    path = PathToHideIn;
+                    break;
+                case Path.PathToHideIn:
+                    label = fileHideInLabel;
+                    path = PathToHideIn;
+                    break;
+
+            }
+            if (path == "") return;
+            label.ForeColor = Color.Green;
+            var splittet = path.Split(@"\");
+            label.Text = splittet[splittet.Count() - 1];
+        }
+
         string pathToHideIn = @"";
         string PathToHideIn
         {
