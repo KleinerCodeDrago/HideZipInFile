@@ -212,9 +212,9 @@ namespace HideZipInFile
             {
                 simu.Keyboard.TextEntry(@"del -f out.zip");
                 simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);               
-                simu.Keyboard.TextEntry(@"exit");
-                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
             }
+            simu.Keyboard.TextEntry(@"exit");
+            simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
         }
     }
 }
