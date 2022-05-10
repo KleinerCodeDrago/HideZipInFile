@@ -39,7 +39,7 @@ namespace HideZipInFile
         {
             Form1_Resize(null, null);
             MinimumSize = new Size(ChooseZipLabel.Width + fileHideInLabel.Width, Math.Max(ChooseZipLabel.Height, fileHideInLabel.Height) + CombineButton.Height + 100);
-            
+
             UpdateLabel(Path.HideFilePath);
             UpdateLabel(Path.PathToHideIn);
         }
@@ -73,7 +73,8 @@ namespace HideZipInFile
         string pathToHideIn = @"";
         string PathToHideIn
         {
-            get {
+            get
+            {
                 return pathToHideIn;
             }
             set
@@ -156,24 +157,62 @@ namespace HideZipInFile
 
         private void CombineButton_Click(object sender, EventArgs e)
         {
-            if (PathToHideIn != "" && HideFilePath != "")
+            if (PathToHideIn == "" && HideFilePath == "") return;
+            var splittet = new List<String>();
+            var simu = new InputSimulator();
+            simu.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_R);
+            System.Threading.Thread.Sleep(250);
+            simu.Keyboard.TextEntry("cmd");
+            simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            System.Threading.Thread.Sleep(250);
+            if(HideFilePath != "")
             {
-                var simu = new InputSimulator();
-                simu.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.VK_R);
-                System.Threading.Thread.Sleep(250);
-                simu.Keyboard.TextEntry("cmd");
+                splittet = HideFilePath.Split(@"\").ToList();
+            }
+            else
+            {
+                splittet = PathToHideIn.Split(@"\").ToList();
+                //simu.Keyboard.TextEntry(@"mkdir empty");
+                //simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+
+                //simu.Keyboard.TextEntry(@"tar.exe -a -c -f out.zip empty");
+                //simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+
+            }
+            var pfad = "";
+            for (int i = 0; i < splittet.Count - 1; i++)
+            {
+                pfad += splittet[i] + @"\";
+            }
+            simu.Keyboard.TextEntry(@"cd " + pfad);
+            simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            bool ohneDatei = false;
+            if (HideFilePath == "")
+            {
+                simu.Keyboard.TextEntry(@"mkdir empty");
                 simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-                System.Threading.Thread.Sleep(250);
-                var splittet = HideFilePath.Split(@"\");
-                var pfad = "";
-                for (int i = 0; i < splittet.Length - 1; i++)
+
+                simu.Keyboard.TextEntry(@"tar.exe -a -c -f out.zip empty");
+                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                simu.Keyboard.TextEntry(@"rmdir empty");
+
+                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+                for (int i = 0; i < splittet.Count - 1; i++)
                 {
-                    pfad += splittet[i] + @"\";
+                    HideFilePath += splittet[i] + @"\";
                 }
-                simu.Keyboard.TextEntry(@"cd " + pfad);
-                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-                var name = PathToHideIn[^5..];
-                simu.Keyboard.TextEntry(@$"copy /b {PathToHideIn}+{HideFilePath} output{name}");
+                HideFilePath += @"out.zip";
+                ohneDatei = true;
+            }
+            simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            var name = PathToHideIn[^5..];
+            simu.Keyboard.TextEntry(@$"copy /b {PathToHideIn}+{HideFilePath} output{name}");
+            simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            if (ohneDatei)
+            {
+                simu.Keyboard.TextEntry(@"del -f out.zip");
+                simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);               
+                simu.Keyboard.TextEntry(@"exit");
                 simu.Keyboard.KeyPress(VirtualKeyCode.RETURN);
             }
         }
