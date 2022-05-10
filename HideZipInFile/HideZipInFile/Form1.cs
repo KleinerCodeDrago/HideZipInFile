@@ -40,15 +40,15 @@ namespace HideZipInFile
             Form1_Resize(null, null);
             MinimumSize = new Size(ChooseZipLabel.Width + fileHideInLabel.Width, Math.Max(ChooseZipLabel.Height, fileHideInLabel.Height) + CombineButton.Height + 100);
             
-            AenderLabel(Path.HideFilePath);
-            AenderLabel(Path.PathToHideIn);
+            UpdateLabel(Path.HideFilePath);
+            UpdateLabel(Path.PathToHideIn);
         }
         enum Path
         {
             HideFilePath,
             PathToHideIn
         }
-        void AenderLabel(Path itIs)
+        void UpdateLabel(Path itIs)
         {
             Label label = null;
             string path = "";
@@ -56,7 +56,7 @@ namespace HideZipInFile
             {
                 case Path.HideFilePath:
                     label = ChooseZipLabel;
-                    path = PathToHideIn;
+                    path = HideFilePath;
                     break;
                 case Path.PathToHideIn:
                     label = fileHideInLabel;
@@ -79,21 +79,17 @@ namespace HideZipInFile
             set
             {
                 pathToHideIn = value;
-                fileHideInLabel.Text = pathToHideIn;
-                fileHideInLabel.ForeColor = Color.Green;
-                var splittet = PathToHideIn.Split(@"\");
-                fileHideInLabel.Text = splittet[splittet.Count() - 1];
+                UpdateLabel(Path.PathToHideIn);
             }
         }
         string hideFilePath = @"";
-        string HideFilePath { get { return hideFilePath; }
-        set
+        string HideFilePath
         {
+            get { return hideFilePath; }
+            set
+            {
                 hideFilePath = value;
-                fileHideInLabel.Text = hideFilePath;
-                ChooseZipLabel.ForeColor = Color.Green;
-                var splittet = HideFilePath.Split(@"\");
-                ChooseZipLabel.Text = splittet[splittet.Count() - 1];
+                UpdateLabel(Path.HideFilePath);
             }
         }
         private void ChooseZipLabel_Click(object sender, EventArgs e)
