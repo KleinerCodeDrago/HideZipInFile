@@ -7,9 +7,9 @@ Wenn dieses Bild anschließend mit einem Programm wie 7zip geöffnet wird öffne
 
 # Download
 
-Downloadlink installer: https://www.mediafire.com/file/dejole9raekel37/FileHiderInstaller.exe/file
+Downloadlink installer: https://www.mediafire.com/file/c8n24skwyf34an4/FileHiderInstaller.exe/file
 
 ## 512 Checksum:
-**8585b1742c47d1020c133e4a8f99a2d3ca8f77e3052e6da7920c9f884f77345823978e9b9d4bc6c4233ae965f9a247c5c8948d6b2b6530dc730e7736fc1e6062**
+**613e615ae4f5f63cdb830c284781cb50406d7f676392c16d1fa90ed690564275f11bc6bfb02fa69b734aff4c5a1be60a8350593c4d63b9c67f864ce240cc4476**
 
 FileHiderInstaller.exe
