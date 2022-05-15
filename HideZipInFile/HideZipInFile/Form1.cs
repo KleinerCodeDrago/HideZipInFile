@@ -28,7 +28,7 @@ namespace HideZipInFile
                 {
                     HideFilePath = file;
                 }
-                else if ((file[^4..] == ".jpg") || (file[^4..] == ".png") || (file[^4..] == ".mp4"))
+                else if ((file[^4..] == ".jpg") || (file[^4..] == ".png") || (file[^4..] == ".mp4") || (file[^4..] == ".gif"))
                 {
                     PathToHideIn = file;
                 }
